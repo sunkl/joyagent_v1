@@ -6,6 +6,7 @@
 ## Introduction
 Most existing open-source agent projects are primarily SDKs or frameworks, requiring users to perform additional development and lacking true out-of-the-box usability. In contrast, our open-source JoyAgent-JDGenie is an end-to-end multi-agent product that can directly answer or resolve user queries or tasks. For example, when a user submits a query like“Provide an analysis of recent trends between the US dollar and gold,”JoyAgent-JDGenie can instantly generate a report in web or PPT format.
 
+
 - **Generality and Customization**
   - JoyAgent-JDGenie is a versatile multi-agent framework. To customize functionality for new scenarios, users only need to integrate relevant sub-agents or tools into JoyAgent-Genie. To demonstrate its generality, JoyAgent-JDGenie achieved 75.15% accuracy on the GAIA benchmark Validation set and 65.12% on the Test set, outperforming industry-leading products such as OWL (CAMEL), Smolagent (Hugging Face), LRC-Huawei (Huawei), xManus (OpenManus), and AutoAgent (University of Hong Kong).
 

@@ -7,6 +7,7 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+
 # 配置文件路径
 CONFIG_FILE="genie-backend/src/main/resources/application.yml"
 ENV_TEMPLATE="genie-tool/.env_template"

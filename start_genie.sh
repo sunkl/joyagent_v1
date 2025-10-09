@@ -5,6 +5,7 @@ echo "当前工作目录: $(pwd)"
 echo "目录列表:"
 ls -la
 
+
 # 开始启动前端服务
 echo "尝试进入ui目录..."
 if [ -d "ui" ]; then
