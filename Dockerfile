@@ -35,8 +35,8 @@ RUN apt-get clean && \
     apt-get install -y --no-install-recommends --allow-change-held-packages build-essential && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install uv
-
+# RUN pip install uv
+pip install uv -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn
 # 最终运行阶段
 FROM docker.m.daocloud.io/library/python:3.11
 
