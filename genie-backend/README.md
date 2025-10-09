@@ -69,9 +69,9 @@ genie-backend/
 - 服务器端口
 - LLM服务地址及APIKEY
 
-code_interpreter_url: "http://127.0.0.1:1601"
-deep_search_url: "http://127.0.0.1:1601"
-mcp_client_url: "http://127.0.0.1:8188"
+code_interpreter_url: "http://120.26.248.237:1601"
+deep_search_url: "http://120.26.248.237:1601"
+mcp_client_url: "http://120.26.248.237:8188"
 
 配置完后重新编译
 
