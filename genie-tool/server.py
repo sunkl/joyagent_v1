@@ -64,7 +64,7 @@ app = create_app()
 
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("--host", dest="host", type="string", default="120.26.248.237")
+    parser.add_option("--host", dest="host", type="string", default="0.0.0.0")
     parser.add_option("--port", dest="port", type="int", default=1601)
     parser.add_option("--workers", dest="workers", type="int", default=10)
     (options, args) = parser.parse_args()
