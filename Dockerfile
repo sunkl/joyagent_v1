@@ -14,8 +14,9 @@ WORKDIR /app
 COPY genie-backend/pom.xml .
 COPY genie-backend/src ./src
 COPY genie-backend/build.sh genie-backend/start.sh ./
-RUN chmod +x build.sh start.sh
-RUN ./build.sh
+RUN sed -i 's/\r$//' build.sh start.sh \
+  && chmod +x build.sh start.sh \
+  && ./build.sh
 
 # Python 环境准备阶段
 FROM docker.m.daocloud.io/library/python:3.11 AS python-base
@@ -113,7 +114,12 @@ VOLUME ["/data/genie-tool"]
 # 复制统一启动脚本
 WORKDIR /app
 COPY start_genie.sh .
-RUN chmod +x start_genie.sh
+RUN #chmod +x start_genie.sh
+RUN sed -i 's/\r$//' start_genie.sh && chmod +x start_genie.sh \
+  && find /app -maxdepth 6 -type f -name '*.sh' -exec sed -i 's/\r$//' {} + \
+  && find /app -maxdepth 6 -type f -name '*.sh' -exec chmod +x {} + \
+  && bash -c 'echo "[debug] bash version: $(bash --version | head -1)"'
+
 
 EXPOSE 3000 8080 1601
 
