@@ -104,6 +104,7 @@ RUN chmod +x start.sh && \
     export UV_DEFAULT_INDEX="https://pypi.tuna.tsinghua.edu.cn/simple" && uv sync && \
     mkdir -p /data/genie-tool && \
     cp .env_template .env && \
+    sed -i 's/\r$//' .env_template .env && \
     python -m genie_tool.db.db_engine
 
 # 设置数据卷

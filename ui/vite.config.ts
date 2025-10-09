@@ -19,7 +19,7 @@ export default defineConfig(({ command, mode }) => {
     css: {preprocessorOptions: {less: {javascriptEnabled: true},},},
     server: {
       // 修改为监听所有接口，而不是特定主机名
-      host: '0.0.0.0',
+      host: '120.26.248.237',
       port: 3000,
       allowedHosts: true,
       proxy: {
