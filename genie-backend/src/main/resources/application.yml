@@ -42,12 +42,12 @@ llm:
     interface_url: '/chat/completions'
     model: deepseek-chat
     max_tokens: 8192
-  settings: '{"claude-3-7-sonnet-v1": {
-        "model": "claude-3-7-sonnet-v1",
+  settings: '{"deepseek-chat": {
+        "model": "deepseek-chat",
         "max_tokens": 8192,
         "temperature": 0,
-        "base_url": "<input llm server here>",
-        "apikey": "<input llm key here>",
+        "base_url": "https://api.deepseek.com/v1",
+        "apikey": "sk-2c14cb24ae7c425590dd9d2fbae3df1c",
         "interface_url": "/chat/completions",
         "max_input_tokens": 128000
     }}'
