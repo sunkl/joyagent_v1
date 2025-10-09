@@ -5,7 +5,6 @@ echo "当前工作目录: $(pwd)"
 echo "目录列表:"
 ls -la
 
-
 # 开始启动前端服务
 echo "尝试进入ui目录..."
 if [ -d "ui" ]; then
@@ -67,43 +66,66 @@ if [ -d "tool" ]; then
     echo "当前目录: $(pwd)"
     echo "tool目录内容:"
     ls -la
-    
+
     # 处理环境变量
     echo "处理环境变量..."
     if [ -f ".env_template" ] && [ ! -f ".env" ]; then
         cp .env_template .env
         echo "已复制.env_template到.env"
     fi
-    
-    if [ -f ".env" ]; then
-        echo "更新.env文件并导出环境变量..."
-        
-        # 如果环境变量已经设置，则更新.env文件
-        if [ ! -z "$OPENAI_API_KEY" ]; then
-            echo "使用环境变量OPENAI_API_KEY更新.env文件"
-            sed -i "s|OPENAI_API_KEY=.*|OPENAI_API_KEY=${OPENAI_API_KEY}|g" .env
+
+        if [ -f ".env" ]; then
+                echo "更新.env文件并导出环境变量..."
+
+                # 如果外部提前通过 -e 传入，则覆盖 .env 中对应行
+                update_env_var() {
+                    local key="$1" val="$2";
+                    if [ -n "$val" ]; then
+                         if grep -q "^${key}=" .env; then
+                             sed -i "s|^${key}=.*|${key}=${val}|" .env
+                         else
+                             echo "${key}=${val}" >> .env
+                         fi
+                    fi
+                }
+
+                update_env_var OPENAI_API_KEY "$OPENAI_API_KEY"
+                update_env_var OPENAI_BASE_URL "$OPENAI_BASE_URL"
+                update_env_var DEEPSEEK_API_KEY "$DEEPSEEK_API_KEY"
+                update_env_var DEEPSEEK_API_BASE "$DEEPSEEK_API_BASE"
+                update_env_var BOCHA_WEB_SEARCH_URL "$BOCHA_WEB_SEARCH_URL"
+                update_env_var BOCHA_API_KEY "$BOCHA_API_KEY"
+
+                echo "从.env文件导出环境变量..."
+                # 读取键=值形式，忽略注释与空行，避免 xargs 在值含空格时截断
+                while IFS='=' read -r k v; do
+                    if [ -n "$k" ] && [ "${k#'#'}" = "$k" ]; then
+                        export "$k"="${v}"
+                    fi
+                done < <(grep -v '^#' .env | sed '/^$/d')
+
+                # 写入 /etc/environment（避免重复累积同一键：先删除再追加）
+                persist_env_var() {
+                    local key="$1" val="${!1}";
+                    if [ -n "$val" ]; then
+                        sed -i "/^${key}=*/d" /etc/environment 2>/dev/null || true
+                        echo "${key}=${val}" >> /etc/environment
+                    fi
+                }
+                persist_env_var OPENAI_API_KEY
+                persist_env_var OPENAI_BASE_URL
+                persist_env_var OPENAI_API_BASE
+                persist_env_var DEEPSEEK_API_KEY
+                persist_env_var DEEPSEEK_API_BASE
+                persist_env_var BOCHA_WEB_SEARCH_URL
+                persist_env_var BOCHA_API_KEY
+
+                echo "环境变量已导出，示例: OPENAI_API_KEY=${OPENAI_API_KEY:0:4}*** BOCHA_WEB_SEARCH_URL=$BOCHA_WEB_SEARCH_URL"
+                echo "Bocha Key 长度: ${#BOCHA_API_KEY}"
+        else
+                echo "警告: .env文件不存在，无法导出环境变量"
         fi
-        
-        if [ ! -z "$OPENAI_BASE_URL" ]; then
-            echo "使用环境变量OPENAI_BASE_URL更新.env文件"
-            sed -i "s|OPENAI_BASE_URL=.*|OPENAI_BASE_URL=${OPENAI_BASE_URL}|g" .env
-        fi
-        
-        # 从.env文件导出所有环境变量到当前shell
-        echo "从.env文件导出环境变量..."
-        export $(grep -v '^#' .env | xargs)
-        
-        # 确保环境变量在全局范围内可用
-        echo "将环境变量添加到/etc/environment以确保在所有shell会话中可用"
-        echo "OPENAI_API_KEY=${OPENAI_API_KEY}" >> /etc/environment
-        echo "OPENAI_BASE_URL=${OPENAI_BASE_URL}" >> /etc/environment
-        echo "OPENAI_API_BASE=${OPENAI_BASE_URL}" >> /etc/environment
-        
-        echo "环境变量已导出: OPENAI_API_KEY=${OPENAI_API_KEY}, OPENAI_BASE_URL=${OPENAI_BASE_URL}, OPENAI_API_BASE=${OPENAI_BASE_URL}"
-    else
-        echo "警告: .env文件不存在，无法导出环境变量"
-    fi
-    
+
     # 初始化数据库
     echo "初始化数据库..."
     if [ -d ".venv" ]; then
@@ -114,10 +136,11 @@ if [ -d "tool" ]; then
     else
         echo "错误: 虚拟环境不存在，无法初始化数据库"
     fi
-    
+
     if [ -f "start.sh" ]; then
         echo "执行tool/start.sh"
         sh start.sh &
+    echo "[调试] 运行期可见: BOCHA_WEB_SEARCH_URL=$BOCHA_WEB_SEARCH_URL BOCHA_API_KEY_LEN=${#BOCHA_API_KEY}"
     else
         echo "错误: tool/start.sh文件不存在"
     fi
