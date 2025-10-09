@@ -8,7 +8,6 @@ RUN pnpm install
 COPY ui/ .
 RUN pnpm build
 
-
 # 后端构建阶段
 FROM docker.m.daocloud.io/library/maven:3.8-openjdk-17 AS backend-builder
 WORKDIR /app
