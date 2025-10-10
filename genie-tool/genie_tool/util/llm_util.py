@@ -74,7 +74,7 @@ async def ask_llm(
         only_content: bool = False,
         extra_headers: Optional[dict] = None,
         **kwargs,
-):
+    ):
     # 1) 规范化 messages
     if isinstance(messages, str):
         messages = [{"role": "user", "content": messages}]
