@@ -62,8 +62,7 @@ def _prune_sampling_params(model: str, temperature, top_p) -> Dict[str, Any]:
 
     return out
 
-
-@Timer(key="enter")
+@timer(key="enter")
 async def ask_llm(
         messages: str | List[Any],
         model: str,
@@ -74,7 +73,7 @@ async def ask_llm(
         only_content: bool = False,
         extra_headers: Optional[dict] = None,
         **kwargs,
-    ):
+):
     # 1) 规范化 messages
     if isinstance(messages, str):
         messages = [{"role": "user", "content": messages}]
