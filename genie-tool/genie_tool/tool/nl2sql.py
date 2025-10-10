@@ -297,6 +297,7 @@ class NL2SQLAgent:
                                                          temperature=self.temperature,
                                                          top_p=self.top_p,
                                                          dialect=dialect)
+
             logger.info(f"*** nl2sql_respoins:{json}")
             logger.info(f"[NL2SQL] [run_nl2sql], nl2sql_response={json.dumps(nl2sql_response, ensure_ascii=False)}")
             return nl2sql_response
