@@ -113,5 +113,5 @@ async def ask_llm(
             yield response.choices[0].message.content if only_content else response
 
 
-if name == "main":
+if __name__ == "__main__":
     pass
