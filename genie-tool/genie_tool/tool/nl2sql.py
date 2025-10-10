@@ -303,6 +303,7 @@ class NL2SQLAgent:
             return nl2sql_response
         except Exception as e:
             err_response = {"code": 6001, "data": "", "request_id": "request_id", "err_msg": e, "status": "data"}
+            logger.info(f"*** excption:{err_response}")
             await self.queue.put(json.dumps(err_response, ensure_ascii=False))
             logger.error(f"[NL2SQL] request_id={request_id} NL2SQL模块执行失败！！！ {e}")
             return err_response
