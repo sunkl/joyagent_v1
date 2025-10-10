@@ -22,7 +22,7 @@ def _as_float(v, name: str) -> Optional[float]:
         return f
     except Exception:
     # 非法就丢弃，不传给下游
-    return None
+        return None
 
 
 def _valid_01(v: Optional[float], zero_open: bool = True) -> Optional[float]:
