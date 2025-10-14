@@ -49,3 +49,15 @@ CREATE TABLE sales_data (
     discount DECIMAL(10, 4) DEFAULT NULL COMMENT '折扣',
     profit DECIMAL(10, 4) DEFAULT NULL COMMENT '利润'
 ) COMMENT='销售数据表';
+
+CREATE TABLE attendance_info (
+    attendance_id INT PRIMARY KEY COMMENT '行 ID',
+    attendance_name VARCHAR(50) DEFAULT NULL COMMENT '员工姓名',
+    age INT  COMMENT '员工年龄',
+    country VARCHAR(100) DEFAULT NULL COMMENT '员工国籍',
+    region VARCHAR(50) DEFAULT NULL COMMENT '员工户籍地址省',
+    department varchar(100) COMMENT '部门',
+    clock_in_time DATETIME  COMMENT '上班打开时间',
+    clock_out_time DATETIME  COMMENT '下班打卡时间',
+    clock_in_type varchar COMMENT '打卡方式（指纹,人脸识别, IC卡, 手机APP, 手动补录)'
+) COMMENT='员工打卡信息表';
