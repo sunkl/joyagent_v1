@@ -346,7 +346,7 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
         type: table
         content: employee_attendance
         remark: 员工考勤明细数据
-        business-prompt: clock_in_time为时间维度数据，如果统计月份要使用FORMATDATETIME(`clock_in_time`, 'yyyy-MM')，如果统计每天数据要使用FORMATDATETIME(`clock_in_time`, 'yyyy-MM-dd'),如果统计小时数据要使用FORMATDATETIME(`clock_in_time`, 'HH:mm:ss')
+        business-prompt: clock_in_time为时间维度数据，如果统计月份要使用FORMATDATETIME(`clock_in_time`, 'yyyy-MM')，如果统计每天数据要使用FORMATDATETIME(`clock_in_time`, 'yyyy-MM-dd')，如果统计小时数据要使用FORMATDATETIME(`clock_in_time`, 'HH:mm:ss')
         ignore-fields:
         default-recall-fields:
         analyze-suggest-fields:
