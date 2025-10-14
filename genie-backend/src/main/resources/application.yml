@@ -341,7 +341,8 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
         analyze-forbid-fields:
         sync-value-fields: 商品名称
         column-alias-map: ''
-      - name: 学生信息表
+      - name: 员工考勤明细数据
+        id: t_employeeattendanc
         type: table
         content: employee_attendance
         ignore-fields:
