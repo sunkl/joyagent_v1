@@ -50,7 +50,7 @@ CREATE TABLE sales_data (
     profit DECIMAL(10, 4) DEFAULT NULL COMMENT '利润'
 ) COMMENT='销售数据表';
 
-CREATE TABLE attendance_info (
+CREATE TABLE employee_attendance (
     attendance_id INT PRIMARY KEY COMMENT '行 ID',
     attendance_name VARCHAR(50) DEFAULT NULL COMMENT '员工姓名',
     age INT  COMMENT '员工年龄',
