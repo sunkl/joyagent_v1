@@ -59,5 +59,5 @@ CREATE TABLE attendance_info (
     department varchar(100) COMMENT '部门',
     clock_in_time DATETIME  COMMENT '上班打开时间',
     clock_out_time DATETIME  COMMENT '下班打卡时间',
-    clock_in_type varchar COMMENT '打卡方式（指纹,人脸识别, IC卡, 手机APP, 手动补录)'
+    clock_in_type varchar(100) COMMENT '打卡方式（指纹,人脸识别, IC卡, 手机APP, 手动补录)'
 ) COMMENT='员工打卡信息表';
