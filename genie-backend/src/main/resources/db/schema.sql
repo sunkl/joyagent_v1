@@ -55,19 +55,19 @@ CREATE TABLE employee_info (
     full_name VARCHAR(50) NOT NULL COMMENT '员工全名',
     gender VARCHAR(50) COMMENT '性别:男或女',
     nationality VARCHAR(30) COMMENT '国籍',
-    id_card VARCHAR(20) UNIQUE COMMENT '身份证号',
+    id_card VARCHAR(20)  COMMENT '身份证号',
     birth_date VARCHAR(200) NOT NULL COMMENT '出生日期',
     department VARCHAR(50) NOT NULL COMMENT '所属部门',
     marital_status VARCHAR(20)  COMMENT '婚姻状况（未婚,已婚,离异）',
     education VARCHAR(20) COMMENT '最高学历（高中,专科,本科,硕士,博士）',
     contact_phone VARCHAR(15) COMMENT '联系电话',
     emergency_contact VARCHAR(15) COMMENT '紧急联系人电话',
-    address VARCHAR(100) COMMENT '现居住地址',
-    hire_date DATEVARCHAR(100) NOT NULL COMMENT '入职日期'
+    address VARCHAR(1000) COMMENT '现居住地址',
+    hire_date VARCHAR(100) NOT NULL COMMENT '入职日期'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='员工基础信息表';
 
 CREATE TABLE salary_info (
-    salary_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '薪酬记录ID',
+    salary_id BIGINT PRIMARY KEY  COMMENT '薪酬记录ID',
     employee_id VARCHAR(20) NOT NULL COMMENT '员工ID（用于外键关联employee_info表）',
     grade int NOT NULL COMMENT '薪酬等级（1-15级）',
     level int NOT NULL COMMENT '薪档（1-5档）',
