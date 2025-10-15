@@ -9999,7 +9999,7 @@ INSERT INTO salary_info (salary_id,employee_id, grade, level, base_salary) VALUE
 ('sly_000008','EMP00008', '薪酬等级13', '薪档2', 11200),
 ('sly_000009','EMP00009', '薪酬等级5', '薪档3',  4200),
 ('sly_000010','EMP00010', '薪酬等级14', '薪档5', 13500);
-INSERT INTO attendance_info (attendance_id, attendance_name, age, country, region, department, clock_in_time, clock_out_time, clock_in_type) VALUES
+INSERT INTO employee_attendance (attendance_id,employee_id , clock_in_time, clock_out_time, clock_in_type) VALUES
 (1, 'EMP00001', '2023-10-01 08:34:30', '2023-10-01 19:05:16', 'IC卡'),
 (2, 'EMP00002', '2023-10-01 08:25:31', '2023-10-01 19:12:54', '手机APP'),
 (3, 'EMP00003', '2023-10-01 08:51:17', '2023-10-01 19:23:17', '手机APP'),
