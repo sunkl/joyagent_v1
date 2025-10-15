@@ -50,14 +50,34 @@ CREATE TABLE sales_data (
     profit DECIMAL(10, 4) DEFAULT NULL COMMENT '利润'
 ) COMMENT='销售数据表';
 
+CREATE TABLE employee_info (
+    employee_id VARCHAR(20) PRIMARY KEY COMMENT '员工ID（主键）',
+    full_name VARCHAR(50) NOT NULL COMMENT '员工全名',
+    gender VARCHAR(50) COMMENT '性别:男或女',
+    nationality VARCHAR(30) COMMENT '国籍',
+    id_card VARCHAR(20) UNIQUE COMMENT '身份证号',
+    birth_date VARCHAR(200) NOT NULL COMMENT '出生日期',
+    department VARCHAR(50) NOT NULL COMMENT '所属部门',
+    marital_status VARCHAR(20)  COMMENT '婚姻状况（未婚,已婚,离异）',
+    education VARCHAR(20) COMMENT '最高学历（高中,专科,本科,硕士,博士）',
+    contact_phone VARCHAR(15) COMMENT '联系电话',
+    emergency_contact VARCHAR(15) COMMENT '紧急联系人电话',
+    address VARCHAR(100) COMMENT '现居住地址',
+    hire_date DATEVARCHAR(100) NOT NULL COMMENT '入职日期'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='员工基础信息表';
+
+CREATE TABLE salary_info (
+    salary_id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '薪酬记录ID',
+    employee_id VARCHAR(20) NOT NULL COMMENT '员工ID（用于外键关联employee_info表）',
+    grade int NOT NULL COMMENT '薪酬等级（1-15级）',
+    level int NOT NULL COMMENT '薪档（1-5档）',
+    base_salary int NOT NULL COMMENT '基本工资'
+) COMMENT='员工薪酬标准表';
+
 CREATE TABLE employee_attendance (
     attendance_id INT PRIMARY KEY COMMENT '行 ID',
-    attendance_name VARCHAR(50) DEFAULT NULL COMMENT '员工姓名',
-    age INT  COMMENT '员工年龄',
-    country VARCHAR(100) DEFAULT NULL COMMENT '员工国籍',
-    region VARCHAR(50) DEFAULT NULL COMMENT '员工户籍地址省',
-    department varchar(100) COMMENT '部门',
-    clock_in_time DATETIME  COMMENT '上班打开时间',
+	employee_id int COMMENT '员工ID',
+    clock_in_time DATETIME  COMMENT '上班打卡时间',
     clock_out_time DATETIME  COMMENT '下班打卡时间',
     clock_in_type varchar(100) COMMENT '打卡方式（指纹,人脸识别, IC卡, 手机APP, 手动补录)'
 ) COMMENT='员工打卡信息表';
