@@ -67,7 +67,7 @@ CREATE TABLE employee_info (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='员工基础信息表';
 
 CREATE TABLE salary_info (
-    salary_id BIGINT PRIMARY KEY  COMMENT '薪酬记录ID',
+    salary_id VARCHAR(20) PRIMARY KEY  COMMENT '薪酬记录ID',
     employee_id VARCHAR(20) NOT NULL COMMENT '员工ID（用于外键关联employee_info表）',
     grade VARCHAR(100) COMMENT '薪酬等级（1-15级）',
     level VARCHAR(100) COMMENT '薪档（1-5档）',
