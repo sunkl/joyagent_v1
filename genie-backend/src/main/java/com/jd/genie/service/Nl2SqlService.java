@@ -136,10 +136,10 @@ public class Nl2SqlService {
             Map<String, ChatSchemaDto> columnMap = modelInfo.getSchemaList().stream().collect(Collectors.toMap(ChatSchemaDto::getColumnId, t -> t));
             List<ChatQueryColumn> chatQueryColumns = parseColumns(sqlModel, columnMap);
             List<ChatQueryFilter> chatQueryFilters = parseFilters(sqlModel, columnMap);
-            String tableName = getTableName(modelInfo);
             String realSql = nl2SQLData.getNl2sql();
             log.info("*** 开始替换modelname：共有model[{}]个",modelMap.size());
             for (String key : modelMap.keySet()) {
+                String tableName = getTableName(modelInfo);
                 log.info("*** 开始匹配model[{}],匹配前SQL：{}",key,realSql);
                 realSql = realSql.replaceAll(key + "|`" + key + "`", tableName);
                 log.info("*** 完成匹配model[{}],匹配前SQL：{}",key,realSql);
