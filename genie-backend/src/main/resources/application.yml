@@ -370,7 +370,7 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
         type: table
         content: employee_attendance
         remark: 包含员工的考勤打卡记录
-        business-prompt: 表中employee_id与employee_info表中的employee_id是外键关系；clock_in_time和clock_out_time是日期维度信息，使用纯文本方式存储（格式为yyyy-MM-dd HH:mm:ss），若基于这两个字段按照时间维度分析需要将字段转换为引擎支持的日期时间格式，如果统计每天数据要使用FORMATDATETIME(`上班打卡时间`, 'yyyy-MM-dd')或，如果统计小时数据要使用FORMATDATETIME(`上班打卡时间`, 'HH:mm:ss')
+        business-prompt: 表中employee_id与employee_info表中的employee_id是外键关系；clock_in_time和clock_out_time是日期维度信息，使用纯文本方式存储（格式为yyyy-MM-dd HH:mm:ss），若基于这两个字段按照时间维度分析需要将字段转换为时间格式:strftime('%Y-%m-%d %H:%i:%s', '上班打卡时间')，如果统计每天数据需要将字符串日期转换为时间格式，再使用FORMATDATETIME( xxx, 'yyyy-MM-dd'),如果统计小时数据需要将字符串日期转换为时间格式，再使用FORMATDATETIME(xxx, 'HH:mm:ss')
         ignore-fields:
         default-recall-fields:
         analyze-suggest-fields:
