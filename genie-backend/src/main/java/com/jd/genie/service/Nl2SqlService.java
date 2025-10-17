@@ -139,10 +139,10 @@ public class Nl2SqlService {
             String realSql = nl2SQLData.getNl2sql();
             log.info("*** 开始替换modelname：共有model[{}]个",modelMap.size());
             for (String key : modelMap.keySet()) {
-                String tableName = getTableName(modelInfo);
-                log.info("*** 开始匹配model[{}],匹配前SQL：{}",key,realSql);
+                String tableName = getTableName(modelMap.get(key));
+                log.info("*** 开始匹配model[{}={}],匹配前SQL：{}",key,tableName,realSql);
                 realSql = realSql.replaceAll(key + "|`" + key + "`", tableName);
-                log.info("*** 完成匹配model[{}],匹配前SQL：{}",key,realSql);
+                log.info("*** 完成匹配model[{}={}],匹配前SQL：{}",key,tableName,realSql);
             }
             log.info("{},{} 执行sql:{}", request.getTraceId(), request.getRequestId(), realSql);
             JdbcQueryRequest jdbcQueryRequest = new JdbcQueryRequest();
