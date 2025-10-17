@@ -138,8 +138,11 @@ public class Nl2SqlService {
             List<ChatQueryFilter> chatQueryFilters = parseFilters(sqlModel, columnMap);
             String tableName = getTableName(modelInfo);
             String realSql = nl2SQLData.getNl2sql();
+            log.info("*** 开始替换modelname：共有model[{}]个",modelMap.size());
             for (String key : modelMap.keySet()) {
+                log.info("*** 开始匹配model[{}],匹配前SQL：{}",key,realSql);
                 realSql = realSql.replaceAll(key + "|`" + key + "`", tableName);
+                log.info("*** 完成匹配model[{}],匹配前SQL：{}",key,realSql);
             }
             log.info("{},{} 执行sql:{}", request.getTraceId(), request.getRequestId(), realSql);
             JdbcQueryRequest jdbcQueryRequest = new JdbcQueryRequest();
