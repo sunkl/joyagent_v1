@@ -136,3 +136,34 @@ CREATE TABLE loan_application_route_detail (
     batchdate VARCHAR(1000) COMMENT '数据日期',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='贷款申请路由与审批明细表';
+
+CREATE TABLE inst_loan_paid_pmpl_stat_c (
+    stat_dt          VARCHAR(1000) COMMENT '统计日期',
+    channel_no       VARCHAR(1000) COMMENT '渠道编号(自营，FX,S9,V8,G9,DE，U1,V3,S9等)',
+    channel_desc     VARCHAR(1000) COMMENT '渠道名称(够享借-益通祥产品,自营,还呗API,微众银行,微财,360借条,晓花)',
+    prod_cde         VARCHAR(1000) COMMENT '产品编号',
+    prod_desc        VARCHAR(1000) COMMENT '产品名称',
+    third_prod_cde   VARCHAR(1000) COMMENT '三级产品编码',
+    third_prod_name  VARCHAR(1000) COMMENT '三级产品名称',
+    buss_typ         VARCHAR(1000) COMMENT '业务类型',
+    ana_typ_first    VARCHAR(1000) COMMENT '分析一级',
+    ana_typ_second   VARCHAR(1000) COMMENT '分析二级',
+    ana_typ_third    VARCHAR(1000) COMMENT '分析三级',
+    ana_typ_fourth   VARCHAR(1000) COMMENT '分析四级',
+    bank_id          VARCHAR(1000) COMMENT '资方编码',
+    bank_name        VARCHAR(1000) COMMENT '资方名称（青岛银行，开泰银行，百信银行，阳光消费金融，中原消费金融，兰州银行）',
+    sdic_code        VARCHAR(1000) COMMENT '融担公司编码',
+    sdic_name        VARCHAR(1000) COMMENT '融担公司名称',
+    self_ps_prcp     DOUBLE        COMMENT '消金应还本金',
+    self_ps_int      DOUBLE        COMMENT '消金应还利息',
+    self_ps_od_int   DOUBLE        COMMENT '消金应还逾期利息',
+    pl_ps_prcp       DOUBLE        COMMENT '资方应还本金',
+    pl_ps_int        DOUBLE        COMMENT '资方应还利息',
+    pl_ps_od_int     DOUBLE        COMMENT '资方应还逾期利息',
+    self_paid_prcp   DOUBLE        COMMENT '消金已还本金',
+    self_paid_int    DOUBLE        COMMENT '消金已还利息',
+    self_paid_od_int DOUBLE        COMMENT '消金已还逾期利息',
+    pl_paid_prcp     DOUBLE        COMMENT '资方已还本金',
+    pl_paid_int      DOUBLE        COMMENT '资方已还利息',
+    pl_paid_od_int   DOUBLE        COMMENT '资方已还逾期利息'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='贷款还款明细分析表';

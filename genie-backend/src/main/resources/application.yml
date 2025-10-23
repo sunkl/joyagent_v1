@@ -341,18 +341,6 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
         analyze-forbid-fields:
         sync-value-fields: 商品名称
         column-alias-map: ''
-      - name: 员工薪酬标准表
-        id: t_salaryinfo
-        type: table
-        content: salary_info
-        remark: 包含每个员工的月薪配置，不是月薪明细
-        business-prompt: 表中employee_id与employee_info表中的employee_id是外键关系
-        ignore-fields:
-        default-recall-fields:
-        analyze-suggest-fields:
-        analyze-forbid-fields: salary_id
-        sync-value-fields:
-        column-alias-map: ''
       - name: 员工基础信息表
         id: t_employeeinfo
         type: table
