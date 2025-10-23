@@ -377,3 +377,15 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
         analyze-forbid-fields: attendance_id
         sync-value-fields:
         column-alias-map: ''
+      - name: 贷款申请路由与审批明细表
+        id: loan_application_route_detail
+        type: table
+        content: loan_application_route_detail
+        remark: 贷款各个链路审批结果
+        business-prompt:
+        ignore-fields:
+        default-recall-fields:
+        analyze-suggest-fields:
+        analyze-forbid-fields: id
+        sync-value-fields:
+        column-alias-map: ''
