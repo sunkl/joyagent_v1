@@ -66,14 +66,6 @@ CREATE TABLE employee_info (
     hire_date VARCHAR(100) NOT NULL COMMENT '入职日期'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='员工基础信息表';
 
-CREATE TABLE salary_info (
-    salary_id VARCHAR(20) PRIMARY KEY  COMMENT '薪酬记录ID',
-    employee_id VARCHAR(20) NOT NULL COMMENT '员工ID（用于外键关联employee_info表）',
-    grade VARCHAR(100) COMMENT '薪酬等级（1-15级）',
-    level VARCHAR(100) COMMENT '薪档（1-5档）',
-    base_salary int NOT NULL COMMENT '基本工资'
-) COMMENT='员工薪酬标准表';
-
 
 CREATE TABLE employee_attendance (
     attendance_id INT PRIMARY KEY COMMENT '行 ID',
