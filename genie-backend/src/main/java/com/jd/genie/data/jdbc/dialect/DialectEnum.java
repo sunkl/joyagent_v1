@@ -7,7 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 public enum DialectEnum {
     MYSQL("MySql", "jdbc:mysql://", "/", ""),
     H2("h2", "jdbc:h2:mem", ":", ";MODE=MySQL"),
-    CLICKHOUSE("ClickHouse", "jdbc:clickhouse://", "/", "");
+    CLICKHOUSE("ClickHouse", "jdbc:clickhouse://", "/", ""),
+    HIVE3("Hive3", "jdbc:hive2://", "/", "");
 
     private final String name;
     private final String urlPrefix;

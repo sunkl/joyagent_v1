@@ -40,6 +40,7 @@ public class SqlParserUtils {
                     .withConformance(SqlConformanceEnum.MYSQL_5);
             case CLICKHOUSE -> ClickHouseSqlDialect2.DEFAULT.configureParser(SqlParser.config())
                     .withConformance(SqlConformanceEnum.LENIENT);
+            case HIVE3 -> Hive3SQL
         };
     }
 
