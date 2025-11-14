@@ -74,6 +74,7 @@ CREATE TABLE salary_info (
     base_salary int NOT NULL COMMENT '基本工资'
 ) COMMENT='员工薪酬标准表';
 
+
 CREATE TABLE employee_attendance (
     attendance_id INT PRIMARY KEY COMMENT '行 ID',
 	employee_id VARCHAR(20) COMMENT '员工ID',
