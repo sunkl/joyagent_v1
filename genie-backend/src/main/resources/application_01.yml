@@ -4,14 +4,14 @@ spring:
   config:
     encoding: UTF-8
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://120.26.248.237:9030/genie
-    username: root
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:genie;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    username: sa
     password:
-  doris2:
+  h2:
     console:
       enabled: true
-      path: /doris2-console
+      path: /h2-console
       settings:
         trace: false
         web-allow-others: false

@@ -8,7 +8,7 @@ public class SqlDialectUtil {
     public static SqlDialect fromDialectString(String dialectString) {
         DialectEnum dialectEnum = DialectEnum.of(dialectString);
         return switch (dialectEnum) {
-            case H2,MYSQL -> MysqlCustomSqlDialect.DEFAULT;
+            case H2, MYSQL, DORIS2, HIVE3 -> MysqlCustomSqlDialect.DEFAULT;
             case CLICKHOUSE -> ClickHouseSqlDialect2.DEFAULT;
         };
     }

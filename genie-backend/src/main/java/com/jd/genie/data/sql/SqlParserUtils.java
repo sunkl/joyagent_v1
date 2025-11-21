@@ -36,11 +36,10 @@ public class SqlParserUtils {
     private static SqlParser.Config parserConfig(@NonNull String dialectString) {
         DialectEnum dialectEnum = DialectEnum.of(dialectString);
         return switch (dialectEnum) {
-            case H2, MYSQL -> MysqlCustomSqlDialect.DEFAULT.configureParser(SqlParser.config())
+            case H2, MYSQL,DORIS2,HIVE3 -> MysqlCustomSqlDialect.DEFAULT.configureParser(SqlParser.config())
                     .withConformance(SqlConformanceEnum.MYSQL_5);
             case CLICKHOUSE -> ClickHouseSqlDialect2.DEFAULT.configureParser(SqlParser.config())
                     .withConformance(SqlConformanceEnum.LENIENT);
-            case HIVE3 -> Hive3SQL
         };
     }
 

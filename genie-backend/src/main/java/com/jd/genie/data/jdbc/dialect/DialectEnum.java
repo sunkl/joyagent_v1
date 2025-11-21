@@ -8,7 +8,9 @@ public enum DialectEnum {
     MYSQL("MySql", "jdbc:mysql://", "/", ""),
     H2("h2", "jdbc:h2:mem", ":", ";MODE=MySQL"),
     CLICKHOUSE("ClickHouse", "jdbc:clickhouse://", "/", ""),
-    HIVE3("Hive3", "jdbc:hive2://", "/", "");
+    HIVE3("Hive3", "jdbc:hive2://", "/", ""),
+    DORIS2("Doris2", "jdbc:mysql://", "/", "");
+
 
     private final String name;
     private final String urlPrefix;
