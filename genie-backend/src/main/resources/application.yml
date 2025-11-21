@@ -310,11 +310,11 @@ Assistant：现在需要在上一步列举出的11、22、33、44、55、66、77
       port: 443
       apiKey: key
     db-config:
-      type: h2
-      host:
+      type: doris2
+      host: 120.26.248.237:9030
       port: 0
       schema: genie
-      username: sa
+      username: root
       password:
     model-list:
       - name: 超市销售明细数据
